@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="PokerApp">
+<head>
+	<title>Poker Game</title>
+	<link rel="stylesheet" href="styles/main-055213e9fb.css"/>
+</head>
+<body ng-controller="GameController as game">
+
+<header>
+	<div class="container">
+		<div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+           </button>
+        </div>
+         <div class="collapse navbar-collapse">
+         	<nav class="navbar navbar-fixed-top green">
+			    <div class="container">
+			      <div class="navbar-header">
+			        <a class="navbar-brand green" href="#">Poker Game</a>
+			      </div>
+			    </div>
+  			</nav>
+
+         </div>
+	</div>
+</header>
+
+<section id="jugadores">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">			   
+			   <div class="panel panel-success">
+      				<div class="panel-heading"><h1>Player 1</h1></div>
+      				<div class="panel-body">
+					<h2>
+		               <span class="playercard" ng-repeat="card in game.hand1.cards" ng-class="card.suit" ng-switch="card.suit">
+		                   {{ card.number }}
+		               <span class="cardsuit" ng-switch-when="spades">♠</span>
+		               <span class="cardsuit" ng-switch-when="clubs">♣</span>
+		               <span class="cardsuit" ng-switch-when="diamonds">♦</span>
+		              <span class="cardsuit"  ng-switch-when="hearts">♥</span>
+		              </span>          
+		            </h2>
+
+      				</div>
+      				<div class="panel-footer"><strong>Result: </strong><h4>{{ game.hand1.score.name }}</h4></div>
+    			</div>
+			</div>
+			<div class="col-md-6">
+			   <div class="panel panel-success">
+      				<div class="panel-heading"><h1>Player 2</h1></div>
+      				<div class="panel-body">
+      				<h2>	
+		               <span class="playercard" ng-repeat="card in game.hand2.cards" ng-class="card.suit" ng-switch="card.suit">
+		                   {{ card.number }}
+		               <span class="cardsuit" ng-switch-when="spades">♠</span>
+		               <span class="cardsuit" ng-switch-when="clubs">♣</span>
+		               <span class="cardsuit" ng-switch-when="diamonds">♦</span>
+		              <span class="cardsuit"  ng-switch-when="hearts">♥</span>
+		              </span>      					
+		             </h2>
+
+      				</div>
+      				<div class="panel-footer"><strong>Result: </strong><h4>{{ game.hand2.score.name }}</h4></div>
+    			</div>				
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="alert alert-info" role="alert" ng-show="game.message">{{ game.message }}</div>
+			<div class="alert alert-danger" role="alert" ng-show="game.error">{{ game.error }}</div>
+			<div class="alert alert-success" role="alert" ng-show="game.winner">{{ game.winner }}</div>	
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<button class="btn btn-primary" type="button" name="button"
+	            	ng-click="game.deal()" ng-disabled="game.message">
+	          		Deal cards
+	        	</button>	
+			</div>
+		
+			<div class="col-md-6">
+	      
+	      
+		        <button class="btn btn-warning" type="button" name="button"
+		            ng-click="game.shuffle()" ng-disabled="game.message">
+		          Shuffle deck
+		        </button>
+	        </div>
+		</div>
+
+
+	</div>
+</section>
+	  
+
+<script src="scripts/main-064a8cdad2.js"></script>
+</body>
+</html>
